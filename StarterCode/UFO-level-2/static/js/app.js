@@ -1,7 +1,6 @@
 // from data.js
 var tableData = data;
 
-// YOUR CODE HERE!
 // Get a reference to the table body
 var tbody = d3.select("tbody");
 
@@ -33,14 +32,18 @@ button.on("click", function() {
     d3.event.preventDefault();
   
   // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
+    var inputElement = d3.select("#category");
 
   // Get the value property of the input element
     var inputValue = inputElement.property("value");
 
     console.log(inputValue);
 
-    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue);
+    var filteredData = tableData.filter(sighting => sighting.datetime === inputValue ||
+                                                    sighting.city === inputValue ||
+                                                    sighting.state === inputValue ||
+                                                    sighting.country === inputValue ||
+                                                    sighting.shape === inputValue);
 
     console.log(filteredData);
 
@@ -48,11 +51,12 @@ button.on("click", function() {
 //  table values 
 // Append a cell to the row for each value
 // in the object
-    filteredData.forEach((selection) => {
+    filteredData.forEach((selections) => {
       var row = tbody.append("tr");
-      Object.entries(selection).forEach(([key, value]) => {
+      Object.entries(selections).forEach(([key, value]) => {
         var cell = row.append("td");
         cell.text(value);
       });
 });
 })
+

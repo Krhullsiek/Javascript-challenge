@@ -43,10 +43,9 @@ button.on("click", function() {
 
     console.log(filteredData);
 
-//  Update each cell's text with
-//  table values 
-// Append a cell to the row for each value
-// in the object
+//  Update each cell's text withtable values 
+// Append a cell to the row for each value in the object
+
     filteredData.forEach((selection) => {
       var row = tbody.append("tr");
       Object.entries(selection).forEach(([key, value]) => {
